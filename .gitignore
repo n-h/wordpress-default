@@ -10,6 +10,16 @@ wordpress/wp-config.php
 # Don't ignore the .gitignore file
 !.gitignore
 
+# Live deployment git deploy hook script
+# Don't ignore entire .deploy-live directory
+!.deploy-live/
+
+# Ignore all files except ones specified below
+.deploy-live/*
+
+# Don't ignore the .deploy-live/deploy.php file, and add to git
+!.deploy-live/deploy.php
+
 #Dont' ignore the entire wp-content directory (specific rules specified below)
 !wp-content/
  
