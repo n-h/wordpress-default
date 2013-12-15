@@ -40,13 +40,3 @@ wp-content/plugins/*
 # Plugins to not ignore, and add to git
 # !wp-content/plugins/my-single-file-plugin.php
 # !wp-content/plugins/my-directory-plugin/
- 
-# Ignore everything in the "themes" directory, except the themes you
-# specify (see the commented-out example for a hint on how to do this.)
-wp-content/themes/*
-
-# Ensure themes folder exists
-!wp-content/themes/index.php
-
-# Themes to not ignore, and add to git
-# !wp-content/themes/my-theme/
