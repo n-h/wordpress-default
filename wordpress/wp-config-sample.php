@@ -34,7 +34,9 @@ define('DB_CHARSET', 'utf8');
 define('DB_COLLATE', '');
 
 /** Custom addition to move wp-content folder to own directory not inside wordpress directory. */
+define('WP_HOME', 'http://' . $_SERVER['SERVER_NAME']);
 define('WP_CONTENT_DIR', dirname(dirname(__FILE__)) . '/wp-content' );
+define('WP_CONTENT_URL', WP_HOME . '/wp-content');
 
 /**#@+
  * Authentication Unique Keys and Salts.
@@ -91,9 +93,3 @@ if ( !defined('ABSPATH') )
 
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
-
-/** Register wordpress default themes directory */
-register_theme_directory(ABSPATH . 'wp-content/themes');
-
-/** Register custom wp-content themes directory outside of wordpress directory */
-register_theme_directory('../../wp-content/themes');
