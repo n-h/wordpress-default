@@ -1,0 +1,42 @@
+# Ignore everything in the root except rules specified below with a ! before them
+/*
+
+# Don't ignore wordpress directory
+!wordpress/
+
+# Ignore wordpress wp-config.php (this is local to the running environment)
+wordpress/wp-config.php
+
+# Don't ignore the .gitignore file
+!.gitignore
+
+#Dont' ignore the entire wp-content directory (specific rules specified below)
+!wp-content/
+ 
+# Ignore everything in the "wp-content" directory, except the "plugins"
+# "themes" and "uploads" directories.
+wp-content/*
+!wp-content/plugins/
+!wp-content/themes/
+!wp-content/uploads/
+ 
+# Ignore everything in the "plugins" directory, except the plugins you
+# specify (see the commented-out examples for hints on how to do this.)
+wp-content/plugins/*
+
+# Ensure plugins folder exists
+!wp-content/plugins/index.php
+
+# Plugins to not ignore, and add to git
+# !wp-content/plugins/my-single-file-plugin.php
+# !wp-content/plugins/my-directory-plugin/
+ 
+# Ignore everything in the "themes" directory, except the themes you
+# specify (see the commented-out example for a hint on how to do this.)
+wp-content/themes/*
+
+# Ensure themes folder exists
+!wp-content/themes/index.php
+
+# Themes to not ignore, and add to git
+# !wp-content/themes/my-theme/
