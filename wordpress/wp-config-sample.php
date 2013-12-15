@@ -33,6 +33,9 @@ define('DB_CHARSET', 'utf8');
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
 
+/** Custom addition to move wp-content folder to own directory not inside wordpress directory. */
+define('WP_CONTENT_DIR', dirname(dirname(__FILE__)) . '/wp-content' );
+
 /**#@+
  * Authentication Unique Keys and Salts.
  *
@@ -88,3 +91,9 @@ if ( !defined('ABSPATH') )
 
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
+
+/** Register wordpress default themes directory */
+register_theme_directory(ABSPATH . 'wp-content/themes');
+
+/** Register custom wp-content themes directory outside of wordpress directory */
+register_theme_directory('../../wp-content/themes');
