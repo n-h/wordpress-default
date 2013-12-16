@@ -34,15 +34,17 @@ define('DB_CHARSET', 'utf8');
 define('DB_COLLATE', '');
 
 /** Trying to dynamically calculate base of WP_HOME */
-$basePath = dirname($_SERVER['SCRIPT_NAME']); // Start to calculate base of WP_HOME
+$basePath = !empty($_SERVER['SCRIPT_NAME']) ? dirname($_SERVER['SCRIPT_NAME']) : ''; // Start to calculate base of WP_HOME
 if(substr($basePath, -18) == 'wordpress/wp-admin') $basePath = dirname(dirname($basePath)); // If in wp-admin perform ../../ on $basePath
-if(php_sapi_name() === 'cli') $basePath = dirname($_SERVER['REQUEST_URI']); // Override $basePath if running from cli
+if(php_sapi_name() === 'cli') $basePath = !empty($_SERVER['REQUEST_URI']) ? dirname($_SERVER['REQUEST_URI']) : ''; // Override $basePath if running from cli
 if($basePath == '/') $basePath = ''; // If result is /, change to '' to not have trailing slash
 
 /** Custom addition to move wp-content folder to own directory not inside wordpress directory. */
-define('WP_HOME', 'http://' . $_SERVER['SERVER_NAME'] . $basePath);
+if(!empty($_SERVER['SERVER_NAME'])) {
+	define('WP_HOME', 'http://' . $_SERVER['SERVER_NAME'] . $basePath);
+	define('WP_CONTENT_URL', WP_HOME . '/wp-content');
+}
 define('WP_CONTENT_DIR', dirname(dirname(__FILE__)) . '/wp-content' );
-define('WP_CONTENT_URL', WP_HOME . '/wp-content');
 
 /**#@+
  * Authentication Unique Keys and Salts.
