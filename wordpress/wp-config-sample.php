@@ -40,8 +40,8 @@ if(php_sapi_name() === 'cli') $basePath = !empty($_SERVER['REQUEST_URI']) ? dirn
 if($basePath == '/') $basePath = ''; // If result is /, change to '' to not have trailing slash
 
 /** Custom addition to move wp-content folder to own directory not inside wordpress directory. */
-if(!empty($_SERVER['SERVER_NAME'])) {
-	define('WP_HOME', 'http://' . $_SERVER['SERVER_NAME'] . $basePath);
+if(!empty($_SERVER['SERVER_NAME']) || !empty($_SERVER['HTTP_HOST'])) {
+	define('WP_HOME', 'http://' . !empty($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : $_SERVER['SERVER_NAME'] . $basePath);
 	define('WP_CONTENT_URL', WP_HOME . '/wp-content');
 }
 define('WP_CONTENT_DIR', dirname(dirname(__FILE__)) . '/wp-content' );
